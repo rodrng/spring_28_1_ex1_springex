@@ -9,15 +9,17 @@
 		SELECT * FROM board ORDER BY mid DESC
 	</select>
 
-	<insert id="writeDao">
+	<insert id="writeDao" >
+		INSERT INTO board (mid, mwriter, mcontent) VALUES(board_seq.nextval, #{param1}, #{param2})
 	
 	</insert>
 
-	<select id="viewDao">
-	
+	<select id="viewDao" resultType="com.javagyeongmin.spring_28_1.dto.ContentDto">
+		SELECT * FROM board WHERE mid = #{param1}
 	</select>
 	
 	<delete id="deleteDao">
+		DELETE FROM board WHERE mid = #{param1}
 	
 	</delete>
  

@@ -28,6 +28,7 @@
 		<beans:property name="password" value="tiger"></beans:property>	
 	</beans:bean>
 	
+	<!--
 	<beans:bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>	
 	</beans:bean>
@@ -35,6 +36,7 @@
 	<beans:bean name="dao" class="com.javagyeongmin.spring_28_1.dao.ContentDao">
 		<beans:property name="template" ref="template"></beans:property>
 	</beans:bean>
+	-->
 	
 	<beans:bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>

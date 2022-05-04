@@ -28,12 +28,12 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	ContentDao dao;
-	
-	@Autowired
-	public void setDao(ContentDao dao) {
-		this.dao = dao;
-	}
+//	ContentDao dao;
+//	
+//	@Autowired
+//	public void setDao(ContentDao dao) {
+//		this.dao = dao;
+//	}
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -74,7 +74,8 @@ public class HomeController {
 	
 	@RequestMapping("/write")
 	public String write(HttpServletRequest request) {
-		
+
+		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.writeDao(request.getParameter("mwriter"), request.getParameter("mcontent"));
 		
 		return "redirect:list";
@@ -82,7 +83,8 @@ public class HomeController {
 	
 	@RequestMapping("/view")
 	public String view(HttpServletRequest request, Model model) {
-		
+
+		IDao dao = sqlSession.getMapper(IDao.class);
 		ContentDto dto = dao.viewDao(request.getParameter("mid"));
 		
 		model.addAttribute("dto", dto);
@@ -92,7 +94,8 @@ public class HomeController {
 	
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request) {
-		
+
+		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.deleteDao(request.getParameter("mid"));
 		
 		return "redirect:list";
